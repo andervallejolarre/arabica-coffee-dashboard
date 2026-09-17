@@ -7,18 +7,16 @@ function App() {
     <>
       <div className="screen">
         <div className="background">
-          <p>COFFEE</p>
-          <p>CHARTS</p>
+          <p className="firstWord">COFFEE</p>
+          <p className="secondWord">CHARTS</p>
         </div>
         <section className="mainPanel">
-          <div className="frame">
             <div className="content">
               <div>
                 <ProductionGraphic />
                 <CountryProd />
               </div>
               <CountrySelect />
-            </div>
           </div>
         </section >
       </div >
