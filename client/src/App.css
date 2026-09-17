@@ -14,21 +14,29 @@
 
   .background {
     height: 100%;
-    font-size: clamp(35vh, 50vw, 50vh);
-    letter-spacing: -0.08em;
-    line-height: 50vh;
-    -webkit-text-stroke: 2px rgb(191, 216, 221);
-    color: white;
+    pointer-events: none;
 
-    justify-items: center;
+    .worldMap {
+      width: 150%;
+      height: 150%;
+      position: relative;
+      right: 31%;
+      bottom: 12%;
+
+      path {
+        fill: none;
+        stroke: rgb(191, 216, 221);
+        stroke-width: 1px;
+      }
+    }
   }
 
   .mainPanel {
     position: absolute;
     justify-self: center;
     align-self: center;
-    width:90%;
-    max-width:1200px;
+    width: 90%;
+    max-width: 1200px;
 
     .content {
       display: grid;
@@ -100,8 +108,30 @@
         }
       }
     }
+  }
 
-    @media (max-width: 780px) {
+  @media (max-width: 780px) {
+
+    .background {
+
+    .worldMap {
+      width: 240%;
+      height: 240%;
+      position: relative;
+      right: 60%;
+      bottom: 60%;
+
+      path {
+        fill: none;
+        stroke: rgb(191, 216, 221);
+        stroke-width: 1px;
+      }
+    }
+  }
+
+    .mainPanel {
+      width: 80%;
+
       .content {
         grid-template-columns: 1fr;
 
@@ -117,16 +147,17 @@
               /* span from the first line to the last line = full row */
             }
 
-            li{
-              padding:0;
+            li {
+              padding: 0;
               border: none;
             }
           }
         }
 
         border-bottom-right-radius: 0;
-        .countryChart{
-          right:0;
+
+        .countryChart {
+          right: 0;
         }
       }
     }
