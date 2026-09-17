@@ -5,13 +5,24 @@ import ProductionGraphic from './features/production/ProductionGraphic'
 function App() {
   return (
     <>
-    <div className="mainPanel">
-      <div>
-    <CountryProd />
-    <ProductionGraphic />
-    </div>
-    <CountrySelect />
-    </div>
+      <div className="screen">
+        <div className="background">
+          <p>COFFEE</p>
+          <p>CHARTS</p>
+        </div>
+        <section className="mainPanel">
+          <div className="frame">
+            <div className="content">
+              <div>
+                <ProductionGraphic />
+                <CountryProd />
+              </div>
+              <CountrySelect />
+            </div>
+          </div>
+        </section >
+      </div >
+
     </>
   )
 }

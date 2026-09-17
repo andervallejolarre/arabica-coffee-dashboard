@@ -1,36 +1,91 @@
-.mainPanel {
+.screen {
   height: 100vh;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  align-content: center;
+  position: relative;
+  color: rgb(57, 91, 68);
 
-  .countrySelection{
-    align-content: left;
-    text-align: left;
-    padding-left: 2em;
+  .background {
+    position: relative;
+    top: 210px;
+
+    font-size: 30vw;
+    line-height: 0.8em;
+    letter-spacing: -0.08em;
+    transform: scale(1, 2.3);
+    -webkit-text-stroke: 2px rgb(191, 216, 221);
+    color: white;
+
+    justify-items: center;
   }
 
-  ul {
-    padding-left: 0;
-
-    li {
-      width: 100%;
-      display: flex;
-      list-style: none;
-      margin-bottom: 2em;
-      text-transform: uppercase;
-    }
-  }
-
-  .chart {
-    text-transform: uppercase;
-    padding:1em;
-  }
-
-  .years-prod{
-    width: 50%;
+  .mainPanel {
+    position: absolute;
     justify-self: center;
-    display: flex;
-    justify-content: space-between;
+    align-self: center;
+
+    .content {
+      display: grid;
+      grid-template-columns: 5fr 2fr;
+
+      background: rgb(216, 232, 220, 90%);
+
+      border: 12px solid rgb(216, 232, 220);
+      border-radius: 20px;
+
+      .countrySelection {
+        margin-top: 0;
+        align-content: left;
+        text-align: left;
+        padding-left: 1em;
+      }
+
+      ul {
+        padding-left: 0;
+
+        h3 {
+          margin-top: 0;
+        }
+
+        li {
+          width: 100%;
+          display: block;
+          list-style: none;
+          padding: 0.5em 0 0.5em;
+          text-align: center;
+          border-bottom: 1px solid rgb(57, 91, 68, 10%);
+
+          button {
+            display: block;
+            background: none;
+            border: none;
+          }
+        }
+      }
+
+      .chart {
+        padding: 1em 1em 1em 1em;
+        margin: 0;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background: rgb(242, 253, 247, 60%);
+      }
+
+      .countryChart {
+        position: absolute;
+        text-transform: uppercase;
+        justify-self: center;
+
+        top: 98%;
+
+        h2 {
+          display: inline-block;
+          padding: 10px;
+          background: rgb(216, 232, 220);
+          border-bottom-left-radius: 35px;
+          border-bottom-right-radius: 10px;
+
+          color: rgb(57, 91, 68)
+        }
+      }
+    }
   }
 }

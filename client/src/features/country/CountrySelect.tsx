@@ -5,12 +5,12 @@ const CountrySelect = () => {
 
     //Countries that are going to be available
     const allCountries = [
-        'ecuador',
-        'peru',
-        'brazil',
-        'colombia',
-        'venezuela',
-        'bolivia'
+        'Ecuador',
+        'Peru',
+        'Brazil',
+        'Colombia',
+        'Venezuela',
+        'Bolivia'
     ];
 
     //our reducer trigger
@@ -18,7 +18,7 @@ const CountrySelect = () => {
 
     //we are triggering our country selector reducer with the clicked country value
     const handleClick = (countrySelection: string) => {
-        const newCountry: Country = { country: countrySelection };
+        const newCountry: Country = { country: countrySelection.toLowerCase() };
         dispatch(countrySelected(newCountry));
     }
 

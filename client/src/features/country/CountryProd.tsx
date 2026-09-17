@@ -14,7 +14,7 @@ const CountryProd = () => {
     }, [selected.country, dispatch])
 
     return (
-        <section className="chart">
+        <section className="countryChart">
             {/*Displaying sountry State*/}
             <h2>{selected.country}'s coffee production </h2>
         </section>
