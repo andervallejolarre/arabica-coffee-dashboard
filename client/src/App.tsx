@@ -12,7 +12,7 @@ function App() {
         </div>
         <section className="mainPanel">
             <div className="content">
-              <div>
+              <div className="part1">
                 <ProductionGraphic />
                 <CountryProd />
               </div>
