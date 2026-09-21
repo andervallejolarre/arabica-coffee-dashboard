@@ -1,8 +1,8 @@
-# Mini Dashboard – Technical Documentation
+# Arabica Coffee Dashboard – Technical Documentation
 
 ## Project Description
 
-Mini Dashboard is the first version of a broader coffee analytics platform and works as the foundational MVP for a larger dashboard ecosystem. This initial release focuses on a single, critical use case: visualizing Arabica coffee production trends across several countries using official data from FAOSTAT.
+Arabica Coffee Dashboard is the first version of a broader coffee analytics platform and works as the foundational MVP for a larger dashboard ecosystem. This initial release focuses on a single, critical use case: visualizing Arabica coffee production trends across several countries using official data from FAOSTAT.
 
 Although it is intentionally limited in scope, this project represents the architectural and technical base on which the rest of the dashboard will be built. It establishes the core patterns for API integration, secure data access, state management, frontend rendering, and validation logic that will be expanded in future iterations.
 
@@ -157,7 +157,7 @@ The project also includes a CI layer built with GitHub Actions. Every push and p
 ## Project Structure
 
 ```text
-mini-dashboard/
+arabica-coffee-dashboard/
 ├── client/
 │   ├── src/
 │   │   ├── components/
@@ -230,7 +230,7 @@ mini-dashboard/
 
 ## Final Portfolio Summary
 
-Mini Dashboard is a focused full-stack project that demonstrates how to build a modern data visualization application using secure API integration, state management, and clean architecture. It combines real-world data from FAOSTAT with a user-friendly dashboard experience, while also reflecting good engineering decisions around authentication, backend separation, and test coverage.
+Arabica Coffee Dashboard is a focused full-stack project that demonstrates how to build a modern data visualization application using secure API integration, state management, and clean architecture. It combines real-world data from FAOSTAT with a user-friendly dashboard experience, while also reflecting good engineering decisions around authentication, backend separation, and test coverage.
 
 This project is particularly valuable for a portfolio because it showcases practical experience with:
 

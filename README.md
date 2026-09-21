@@ -1,4 +1,4 @@
-# Mini Dashboard — Coffee Production Trends
+# Arabica Coffee Dashboard — Coffee Production Trends
 
 A full-stack mini dashboard application that visualizes global and per-country Arabica coffee production data. It fetches data securely from the official **FAOSTAT API** via an Express proxy backend and presents interactive charts using React, Redux Toolkit, and Mantine Charts.
 
@@ -56,7 +56,7 @@ PORT=4040
 
 ### 1. Installation
 
-Navigate to the `mini-dashboard` folder and install dependencies across sub-projects:
+Navigate to the `arabica-coffee-dashboard` folder and install dependencies across sub-projects:
 
 ```bash
 # Install root/workspace scripts if applicable, or install dependencies per package:
@@ -91,9 +91,9 @@ cd ../e2e && npm install
 
 ## 🧪 Running Tests
 
-The workspace includes scripts at the root of `mini-dashboard` to run all test suites conveniently:
+The workspace includes scripts at the root of `arabica-coffee-dashboard` to run all test suites conveniently:
 
-From the `mini-dashboard/` folder:
+From the `arabica-coffee-dashboard/` folder:
 
 ```bash
 # Run client unit & integration tests (Vitest)
@@ -114,7 +114,7 @@ npm run test:all
 ## 📂 Project Structure
 
 ```text
-mini-dashboard/
+arabica-coffee-dashboard/
 ├── client/          # React + Vite frontend application
 │   ├── src/
 │   │   ├── components/    # Reusable UI widgets & charts
