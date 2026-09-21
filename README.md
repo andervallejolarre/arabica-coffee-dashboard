@@ -2,6 +2,8 @@
 
 A full-stack mini dashboard application that visualizes global and per-country Arabica coffee production data. It fetches data securely from the official **FAOSTAT API** via an Express proxy backend and presents interactive charts using React, Redux Toolkit, and Mantine Charts.
 
+This is the first step of a larger coffee analytics project: a focused v1.0 foundation that validates the product idea, the architecture, and the data flow before expanding into a more complete dashboard ecosystem.
+
 ---
 
 ## 🛠 Tech Stack & Tools
@@ -9,17 +11,20 @@ A full-stack mini dashboard application that visualizes global and per-country A
 - **Frontend (`client/`)**:
   - **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vitejs.dev/)
   - **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/) (Async Thunks, Slices)
-  - **UI & Visualization**: [Mantine Core](https://mantine.dev/), [Mantine Charts](https://mantine.dev/charts/installation/) (Recharts)
-  - **Testing**: [Vitest](https://vitest.dev/), [@testing-library/react](https://testing-library.com/)
+  - **UI & Visualization**: [Mantine Core](https://mantine.dev/), [Mantine Charts](https://mantine.dev/charts/installation/) (Recharts), [react-simple-maps](https://www.npmjs.com/package/react-simple-maps)
+  - **Testing**: [Vitest](https://vitest.dev/), [@testing-library/react](https://testing-library.com/), [@testing-library/jest-dom](https://testing-library.com/docs/ecosystem-jest-dom/)
 
 - **Backend (`server/`)**:
   - **Runtime & Framework**: [Node.js](https://nodejs.org/) + [Express 5](https://expressjs.com/) + [TypeScript](https://www.typescriptlang.org/)
   - **Development Tooling**: `ts-node-dev` (hot reload)
-  - **Middleware & Security**: Token-based authentication manager for FAOSTAT API, CORS
+  - **Middleware & Security**: Token-based authentication manager for FAOSTAT API, CORS, environment-based secret management
   - **Testing**: [Jest](https://jestjs.io/), [Supertest](https://github.com/ladjs/supertest)
 
 - **End-to-End Testing (`e2e/`)**:
   - **Framework**: [Playwright](https://playwright.dev/)
+
+- **Automation / CI**:
+  - **Workflow Validation**: [GitHub Actions](https://github.com/features/actions) running client, server, and E2E test suites on push and pull request
 
 ---
 
