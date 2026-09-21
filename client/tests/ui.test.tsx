@@ -28,8 +28,8 @@ describe('country data interaction', () => {
         )
 
         expect(screen.getAllByRole('button')).toHaveLength(6)
-        expect(screen.getByRole('button', { name: 'ecuador' })).toBeInTheDocument()
-        expect(screen.getByRole('button', { name: 'peru' })).toBeInTheDocument()
+        expect(screen.getByRole('button', { name: 'Ecuador' })).toBeInTheDocument()
+        expect(screen.getByRole('button', { name: 'Peru' })).toBeInTheDocument()
     })
 
     test('changes the selected country when a country is clicked', async () => {
@@ -43,7 +43,7 @@ describe('country data interaction', () => {
             </Provider>
         )
 
-        await user.click(screen.getByRole('button', { name: 'peru' }))
+        await user.click(screen.getByRole('button', { name: 'Peru' }))
 
         expect(store.getState().country.country).toBe('peru')
     })

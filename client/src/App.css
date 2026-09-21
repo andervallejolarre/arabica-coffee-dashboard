@@ -137,6 +137,7 @@
 
       .content {
         grid-template-columns: 1fr;
+        border-bottom-right-radius: 0;
 
         .part2 {
           order: -1;
@@ -156,8 +157,6 @@
             }
           }
         }
-
-        border-bottom-right-radius: 0;
 
         .countryChart {
           right: 0;
