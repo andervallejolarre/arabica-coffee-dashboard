@@ -4,6 +4,8 @@ A full-stack mini dashboard application that visualizes global and per-country A
 
 This is the first step of a larger coffee analytics project: a focused v1.0 foundation that validates the product idea, the architecture, and the data flow before expanding into a more complete dashboard ecosystem.
 
+<img src="./client/public/arabica-coffee-dashboard.png" width="480">
+
 ---
 
 ## 🛠 Tech Stack & Tools
