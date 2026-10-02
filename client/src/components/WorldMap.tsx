@@ -6,7 +6,7 @@ const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
 const WorldMap = () => {
     return (
         /*Structure needed to use react-simple-maps */
-        <ComposableMap className="worldMap" projection="geoNaturalEarth1">
+        <ComposableMap className="worldMap" projection="geoEqualEarth">
             {/*There are other attributes available for ComposableMap*/}
             <Geographies geography={geoUrl}>
                 {/*Zoom In, Annotations, screens, etc are available as extra components*/}
