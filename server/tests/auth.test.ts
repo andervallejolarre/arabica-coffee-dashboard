@@ -56,7 +56,7 @@ describe('GET /api/production/:country', () => {
             { year: 2025, value: 321 },
             { year: 2024, value: 111 },
         ]);
-        //3 calls to our bacend because we already loggedIn.
+        //3 calls to our backend because we already loggedIn.
         expect(fetchMock).toHaveBeenCalledTimes(3);
         expect(fetchMock).toHaveBeenLastCalledWith(
             expect.stringContaining("area=58"),
@@ -100,6 +100,64 @@ describe('GET /api/production/:country', () => {
     });
 });
 
+describe('GET /api/production/global', () => {
+    it('logs In successfully and passes the token to the production route and request URL uses area=5000', async () => {
+        const app = await getFreshApp();
+        //we mock the API Req/Res
+        const fetchMock = jest.spyOn(global, "fetch");
+
+        fetchMock
+            //For the first Request, this is going to be the outcome
+            .mockResolvedValueOnce(successfulLogin())
+            //For the second Request, this is going to be the outcome
+            .mockResolvedValueOnce(productionData());
+
+        const response = await request(app).get("/api/production/global");
+
+        expect(response.status).toBe(200);
+        //Here we compare the expected responses
+        expect(fetchMock).toHaveBeenCalledTimes(2);
+        expect(fetchMock).toHaveBeenLastCalledWith(
+            expect.stringContaining("area=5000"),
+            {
+                headers: { Authorization: "Bearer test-token" },
+            }
+        );
+    });
+});
+describe("fetching global production data and the country production", () => {
+
+    it('two requests, first one logsIn second one does not need to', async () => {
+        const app = await getFreshApp();
+        const fetchMock = jest.spyOn(global, "fetch");
+
+        fetchMock
+            .mockResolvedValueOnce(successfulLogin())
+            .mockResolvedValueOnce(productionData())
+            .mockResolvedValueOnce(
+                productionData([
+                    { Year: 2025, Value: 321 },
+                    { Year: 2024, Value: 111 },
+                ])
+            );
+
+        await request(app).get("/api/production/global");
+        const response = await request(app).get("/api/production/ecuador");
+
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual([
+            { year: 2025, value: 321 },
+            { year: 2024, value: 111 },
+        ]);
+        //3 calls to our backend because global data fetching logs In.
+        expect(fetchMock).toHaveBeenCalledTimes(3);
+        expect(fetchMock).toHaveBeenLastCalledWith(
+            expect.stringContaining("area=58"),
+            expect.anything()
+        );
+    });
+});
+
 describe("when FAOSTAT credentials are unavailable", () => {
     const originalEnv = process.env;
 
@@ -136,7 +194,7 @@ describe("when FAOSTAT credentials are unavailable", () => {
     });
 });
 
-describe('GET /api/production/:country', () => {
+describe('When we cant reach our API', () => {
     it('massive API system failure', async () => {
         const app = await getFreshApp();
         //Here we change mockResolvedValueOnce for a RejectedValueOnce to test errors

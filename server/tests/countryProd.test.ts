@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, jest } from "@jest/globals";
+import { afterEach, describe, expect, it, jest } from "@jest/globals";
 import request from 'supertest';
 
 import { getFreshApp, successfulLogin, productionData } from "./helpers/testHelpers"
@@ -26,6 +26,23 @@ describe('GET /api/production/:country', () => {
       { year: 2024, value: 100 },
     ]);
   });
+
+  it('supports camelCase multi-word slugs', async () => {
+    const app = await getFreshApp();
+    const fetchMock = jest.spyOn(global, "fetch");
+
+    fetchMock
+        .mockResolvedValueOnce(successfulLogin())
+        .mockResolvedValueOnce(productionData());
+
+    const response = await request(app).get("/api/production/costaRica");
+
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenLastCalledWith(
+        expect.stringContaining("area=48"),
+        expect.anything()
+    );
+});
 
   it('response filters any number of key/values getting back only year and value', async () => {
     const app = await getFreshApp();
@@ -70,6 +87,21 @@ describe('GET /api/production/:country', () => {
     expect(response.body).toEqual({
       ok: false,
       payload: expect.stringContaining("Unsupported country: myanmar"),
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('slug must match with strict equality', async () => {
+    const app = await getFreshApp();
+    const fetchMock = jest.spyOn(global, "fetch").mockResolvedValueOnce(successfulLogin());
+
+    const response = await request(app).get("/api/production/ElSalvador");
+
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      ok: false,
+      payload: expect.stringContaining("Unsupported country: ElSalvador"),
     });
 
     expect(fetchMock).toHaveBeenCalledTimes(1);

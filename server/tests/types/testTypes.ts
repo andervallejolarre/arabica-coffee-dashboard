@@ -4,4 +4,3 @@ export type FaostatTestRecord = {
   Value: number;
   [key: string]: unknown;
 };
-
