@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import countryReducer from './features/country/countrySlice'
+import catalogReducer from './features/catalog/catalogSlice'
+import selectionReducer from './features/selection/selectionSlice'
 import productionReducer from './features/production/productionSlice'
 
 export const store = configureStore({
   reducer: {
     //we have two reducers available
-    country: countryReducer,
+    catalog: catalogReducer,
+    selection: selectionReducer,
     production: productionReducer
   }
 })

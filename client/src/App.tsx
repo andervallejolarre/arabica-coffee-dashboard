@@ -1,15 +1,19 @@
 import './App.css'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from './hooks/index'
+import { fetchCatalog } from './features/catalog/catalogSlice.ts'
 
-import CountryProd from './features/country/CountryProd'
-import CountrySelect from './features/country/CountrySelect'
+import CountryProd from './components/CountryProd'
+import CountrySelect from './features/selection/VariableSelection'
 import ProductionGraphic from './features/production/ProductionGraphic'
 import WorldMap from './components/WorldMap'
 function App() {
-  useEffect(() => {
 
-  },[])
+  const dispatch = useAppDispatch()
+      //catalog is fetched once, when the app mounts
+    useEffect(() => {
+        dispatch(fetchCatalog())
+    }, [dispatch])
 
   return (
     <>

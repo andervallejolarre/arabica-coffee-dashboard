@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/index'
-import { fetchProduction } from '../production/productionSlice'
-import type { Country } from './countrySlice';
+import { useAppDispatch, useAppSelector } from '../hooks/index'
+import { fetchProduction } from '../features/production/productionSlice'
+import type { SelectionState } from '../features/selection/selectionSlice';
 
 const CountryProd = () => {
     const dispatch = useAppDispatch()
     // We use the selector hook to get `state.country`
-    const selected: Country = useAppSelector(state => state.country);
+    const selected: SelectionState = useAppSelector(state => state.selection);
 
     useEffect(() => {
         //Event Listenner. WHen ever country state changes fetchProduction is triggered

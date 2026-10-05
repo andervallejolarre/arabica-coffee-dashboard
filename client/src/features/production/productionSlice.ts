@@ -20,8 +20,8 @@ const initialState : ProductionState = {
 export const fetchProduction = createAsyncThunk(
   'production/fetch',
   async (_, { getState }) => {
-    //we need our countrySlice state from the store
-    const { country } = (getState() as RootState).country
+    //selection.country is already the slug chosen in CountrySelect
+    const { country } = (getState() as RootState).selection
     const res = await axios.get(`/api/production/${country}`)
     //we now the format of our response 
     return res.data as ProductionPoint[]
