@@ -4,7 +4,7 @@ import Graph from '../../components/Graph'
 
 const ProductionGraphic = () => {
     // We use the selector hook to get state.production
-    const fetch: ProductionState = useAppSelector(state => state.production);
+    const fetch: ProductionState = useAppSelector(state => state.production.country);
 
     return (
         <section className="chart">

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/index'
-import { fetchProduction } from '../features/production/productionSlice'
+import { fetchCountryProduction } from '../features/production/productionSlice'
 import type { SelectionState } from '../features/selection/selectionSlice';
 
 const CountryProd = () => {
@@ -10,7 +10,7 @@ const CountryProd = () => {
 
     useEffect(() => {
         //Event Listenner. WHen ever country state changes fetchProduction is triggered
-        dispatch(fetchProduction())
+        dispatch(fetchCountryProduction())
     }, [selected.country, dispatch])
 
     return (

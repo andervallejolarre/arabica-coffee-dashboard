@@ -2,6 +2,7 @@ import './App.css'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from './hooks/index'
 import { fetchCatalog } from './features/catalog/catalogSlice.ts'
+import { fetchGlobalProduction } from './features/production/productionSlice.ts'
 
 import CountryProd from './components/CountryProd'
 import CountrySelect from './features/selection/VariableSelection'
@@ -13,6 +14,7 @@ function App() {
       //catalog is fetched once, when the app mounts
     useEffect(() => {
         dispatch(fetchCatalog())
+        dispatch(fetchGlobalProduction())
     }, [dispatch])
 
   return (
