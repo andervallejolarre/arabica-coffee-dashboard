@@ -29,33 +29,31 @@ const VariableSelection = () => {
 
     return (
         <section className="variableSelectors">
-            <div>
-                <label>Continent:</label>
-                <select
-                    name="continents"
-                    id="continent-select"
-                    value={selectedContinent ?? ''}
-                    onChange={handleContinentChange}
-                >
-                    <option value="" disabled>Select a continent</option>
-                    {continents.map(continent => (
-                        <option key={continent} value={continent}>{continent}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <label>Country:</label>
-                <select
-                    name="countries"
-                    id="country-select"
-                    value={selectedCountry}
-                    onChange={handleCountryChange}
-                >
-                    {countriesInvolved.map(country => (
-                        <option key={country.slug} value={country.slug}>{country.name}</option>
-                    ))}
-                </select>
-            </div>
+
+            <label>Continent:</label>
+            <select
+                name="continents"
+                id="continent-select"
+                value={selectedContinent ?? ''}
+                onChange={handleContinentChange}
+            >
+                <option value="" disabled>Select a continent</option>
+                {continents.map(continent => (
+                    <option key={continent} value={continent}>{continent}</option>
+                ))}
+            </select>
+
+            <label>Country:</label>
+            <select
+                name="countries"
+                id="country-select"
+                value={selectedCountry}
+                onChange={handleCountryChange}
+            >
+                {countriesInvolved.map(country => (
+                    <option key={country.slug} value={country.slug}>{country.name}</option>
+                ))}
+            </select>
         </section>
     )
 }

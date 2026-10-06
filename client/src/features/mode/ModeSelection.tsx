@@ -21,21 +21,18 @@ const ModeSelection = () => {
     }
 
     return (
-        <section className="modeSelector">
-            <div>
-                <label>Mode:</label>
-                <select
-                    name="mode"
-                    id="mode-select"
-                    value={selectedMode}
-                    onChange={handleModeChange}
-                >
-                    <option key='global' value='global'>Global</option>
-                    <option key='country' value='country'>Country</option>
-
-                </select>
-            </div>
-        </section>
+        <div className="modeSelector">
+            <label>Mode:</label>
+            <select
+                name="mode"
+                id="mode-select"
+                value={selectedMode}
+                onChange={handleModeChange}
+            >
+                <option key='global' value='global'>Global</option>
+                <option key='country' value='country'>Country</option>
+            </select>
+        </div>
     )
 }
 

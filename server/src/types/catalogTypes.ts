@@ -13,4 +13,5 @@ export type CountrySummary = {
     slug: string;
     name: string;
     continent: Continent;
+    geoId: string;
 };

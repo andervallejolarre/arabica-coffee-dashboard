@@ -9,10 +9,10 @@ const Navbar = () =>{
     const modeSelected: ModeState = useAppSelector(state => state.mode.value)
 
     return(
-        <div className='navbar'>
+        <section className='navbar'>
             <ModeSelection />
             {modeSelected === 'country' && <VariableSelection />}
-        </div>
+        </section>
     )
 }
 

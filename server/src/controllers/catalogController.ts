@@ -11,6 +11,7 @@ export const catalogData = async (req: Request, res: Response): Promise<void> =>
             slug: item.slug,
             name: item.name,
             continent: item.continent,
+            geoId: item.geoId
         }));
 
         res.json(catalog);

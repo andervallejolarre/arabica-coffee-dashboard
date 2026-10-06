@@ -4,7 +4,7 @@ import { useAppDispatch} from './hooks/index'
 import { fetchCatalog } from './features/catalog/catalogSlice.ts'
 import { fetchGlobalProduction } from './features/production/productionSlice.ts'
 
-import CountrySelected from './components/CountrySelected.tsx'
+import TargetData from './components/TargetData.tsx'
 import Navbar from './components/Navbar.tsx'
 import ProductionGraphic from './features/production/ProductionGraphic'
 import WorldMap from './components/WorldMap'
@@ -27,7 +27,7 @@ function App() {
         </div>
         <section className="mainPanel">
           <ProductionGraphic />
-          <CountrySelected />
+          <TargetData />
         </section >
       </div >
     </>

@@ -4,7 +4,7 @@ import { fetchCountryProduction } from '../features/production/productionSlice'
 import type { SelectionState } from '../features/selection/selectionSlice';
 import type { ModeState } from '../features/mode/modeSlice';
 
-const CountryProd = () => {
+const TargetData = () => {
     const dispatch = useAppDispatch()
     // We use the selector hook to get `state.country`
     const mode: ModeState = useAppSelector(state => state.mode.value)
@@ -23,4 +23,4 @@ const CountryProd = () => {
     )
 }
 
-export default CountryProd
+export default TargetData
