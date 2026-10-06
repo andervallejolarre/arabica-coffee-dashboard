@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import catalogReducer from './features/catalog/catalogSlice'
 import selectionReducer from './features/selection/selectionSlice'
 import productionReducer from './features/production/productionSlice'
+import modeReducer from './features/mode/modeSlice'
 
 export const store = configureStore({
   reducer: {
     //we have two reducers available
+    mode: modeReducer,
     catalog: catalogReducer,
     selection: selectionReducer,
     production: productionReducer

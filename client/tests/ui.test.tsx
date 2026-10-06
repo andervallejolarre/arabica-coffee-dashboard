@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import axios from 'axios'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import CountryProd from '../src/components/CountryProd'
+import CountryProd from '../src/components/CountrySelected'
 import CountrySelect from '../src/features/selection/VariableSelection'
 import { countrySelected } from '../src/features/selection/selectionSlice'
-import productionReducer, { fetchProduction } from '../src/features/production/productionSlice'
+import productionReducer, { fetchCountryProduction } from '../src/features/production/productionSlice'
 import { store } from '../src/store'
 
 //Unit tests

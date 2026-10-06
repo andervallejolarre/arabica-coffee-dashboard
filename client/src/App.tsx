@@ -4,10 +4,12 @@ import { useAppDispatch, useAppSelector } from './hooks/index'
 import { fetchCatalog } from './features/catalog/catalogSlice.ts'
 import { fetchGlobalProduction } from './features/production/productionSlice.ts'
 
-import CountryProd from './components/CountryProd'
-import CountrySelect from './features/selection/VariableSelection'
+import CountrySelected from './components/CountrySelected.tsx'
+import ModeSelection from './features/mode/ModeSelection.tsx'
+import VariableSelection from './features/selection/VariableSelection'
 import ProductionGraphic from './features/production/ProductionGraphic'
 import WorldMap from './components/WorldMap'
+
 function App() {
 
   const dispatch = useAppDispatch()
@@ -20,20 +22,18 @@ function App() {
   return (
     <>
       <div className="screen">
+        <ModeSelection />
+        <VariableSelection />
         <div className="background">
           <WorldMap />
         </div>
         <section className="mainPanel">
             <div className="content">
-              <div className="part1">
                 <ProductionGraphic />
-                <CountryProd />
-              </div>
-              <CountrySelect />
+                <CountrySelected />              
           </div>
         </section >
       </div >
-
     </>
   )
 }

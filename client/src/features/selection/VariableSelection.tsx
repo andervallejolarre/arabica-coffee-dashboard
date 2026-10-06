@@ -2,13 +2,12 @@ import type { ChangeEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/index'
 import { countrySelected, continentSelected } from './selectionSlice.ts'
 
-
-const CountrySelect = () => {
+const VariableSelection = () => {
 
     //our reducer trigger
     const dispatch = useAppDispatch()
 
-    //the currently selected country, used to highlight the active button
+    //the currently selected continent and country
     const selectedContinent = useAppSelector(state => state.selection.continent)
     const selectedCountry = useAppSelector(state => state.selection.country)
 
@@ -16,7 +15,9 @@ const CountrySelect = () => {
 
     //unique list of continents derived from the catalog
     const continents = Array.from(new Set(catalogData.map(item => item.continent)))
-    const countriesInContinent = catalogData.filter(item => item.continent === selectedContinent)
+    const countriesInvolved = selectedContinent != ''
+        ? catalogData.filter(item => item.continent === selectedContinent)
+        : catalogData
 
     const handleContinentChange = (event: ChangeEvent<HTMLSelectElement>) => {
         dispatch(continentSelected(event.target.value))
@@ -27,7 +28,7 @@ const CountrySelect = () => {
     }
 
     return (
-        <section className="part2">
+        <section className="variableSelectors">
             <div>
                 <label>Continent:</label>
                 <select
@@ -50,7 +51,7 @@ const CountrySelect = () => {
                     value={selectedCountry}
                     onChange={handleCountryChange}
                 >
-                    {countriesInContinent.map(country => (
+                    {countriesInvolved.map(country => (
                         <option key={country.slug} value={country.slug}>{country.name}</option>
                     ))}
                 </select>
@@ -59,4 +60,4 @@ const CountrySelect = () => {
     )
 }
 
-export default CountrySelect
+export default VariableSelection
