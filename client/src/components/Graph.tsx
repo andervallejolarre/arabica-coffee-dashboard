@@ -6,7 +6,7 @@ const Graph = (props: ProductionState) => {
         <div>
             {/*using a Mantine widget*/}
             <AreaChart
-                h="50vh"
+                h="35vh"
                 data={props.production}
                 // X 
                 dataKey="year"

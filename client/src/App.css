@@ -2,15 +2,17 @@
   width: 100%;
   border: none;
   overflow: hidden;
+  background: rgb(236, 252, 240, 80%);
 }
 
 .screen {
   position: relative;
   justify-content: center;
-  background: rgb(236, 252, 240, 80%);
+  margin: 0 auto;
   height: 100vh;
 
   .navbar {
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-around;
@@ -27,31 +29,39 @@
   }
 
   .background {
-    height: 100%;
-    pointer-events: none;
+    margin:0;
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    justify-content: center;
+    max-height: 95vh;
 
     .worldMap {
-      width: 150%;
-      height: 120%;
+      justify-self: center;
       position: relative;
-      right: 30%;
-      bottom: 15%;
+      width: 100vw;
+      min-width: 1400px;
+      height: auto;
+      max-height: 95vh;
+      min-height: 85vh;
+      display: block;
     }
   }
 
   .mainPanel {
     position: relative;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vw;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 95vh;
 
     align-content: center;
 
     .chart {
-      position:relative;
-      width: 70vw;
-      height: 50vh;
+      position: relative;
+      width: 50vw;
+      max-width: 680px;
+      height: 43vh;
       padding: 1em 1em 1em 1em;
       margin: 0;
       background: rgb(236, 252, 240, 80%);
@@ -59,22 +69,31 @@
       border: 12px solid rgb(216, 232, 220);
       border-radius: 20px;
 
-      justify-self: center ;
+      justify-self: center;
     }
 
     .countryChart {
-      position: absolute;
+      margin-top: 15vh;
       text-transform: uppercase;
       justify-self: center;
 
       h2 {
+        font-size: xx-large;
         display: inline-block;
         padding: 10px;
         background: rgb(216, 232, 220);
-        border-bottom-left-radius: 35px;
-        border-bottom-right-radius: 10px;
-
+        border-radius: 10px;
         color: rgb(57, 91, 68)
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+
+    .background {
+      .worldMap {
+        min-width: 1600px;
+        transform: translateX(-50px);
       }
     }
   }
@@ -84,12 +103,6 @@
     .background {
 
       .worldMap {
-        width: 240%;
-        height: 240%;
-        position: relative;
-        right: 60%;
-        bottom: 60%;
-
         path {
           fill: rgba(191, 216, 221);
           stroke: rgb(191, 216, 221);

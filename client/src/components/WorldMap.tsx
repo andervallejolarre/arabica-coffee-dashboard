@@ -14,7 +14,13 @@ const WorldMap = () => {
 
     return (
         /*Structure needed to use react-simple-maps */
-        <ComposableMap className="worldMap" projection="geoEqualEarth">
+        <ComposableMap
+            className="worldMap"
+            projection="geoEqualEarth"
+            width={1200}
+            height={600}
+            projectionConfig={{ scale: 225 }}
+        >
             {/*There are other attributes available for ComposableMap*/}
             <Geographies geography={geoUrl}>
                 {/*Zoom In, Annotations, screens, etc are available as extra components*/}
