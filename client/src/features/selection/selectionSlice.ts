@@ -3,12 +3,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 //our state type
 export interface SelectionState {
   country: string,
-  continent: string | null
+  continent: string | null,
+  worldComparison: boolean
 }
 
 const initialState: SelectionState = { 
-  country: 'brazil',
-  continent: ''
+  country: '',
+  continent: '',
+  worldComparison: true
  }
 
 const selectionSlice = createSlice({
@@ -19,9 +21,14 @@ const selectionSlice = createSlice({
     //Our only reducer. It's going to be exported next
     continentSelected(state, action: PayloadAction<string | null>) {
       state.continent = action.payload
+      //the previous country may not belong to the new continent, so reset it
+      state.country = ''
     },
     countrySelected(state, action: PayloadAction<string>) {
       state.country = action.payload
+    },
+    worldComparison(state, action: PayloadAction<boolean>) {
+      state.worldComparison = action.payload
     },
   }
 })
@@ -29,6 +36,7 @@ const selectionSlice = createSlice({
 // Export the auto-generated action creator with the same name
 export const { continentSelected } = selectionSlice.actions
 export const { countrySelected } = selectionSlice.actions
+export const { worldComparison } = selectionSlice.actions
 
 // Export the generated reducer function
 export default selectionSlice.reducer

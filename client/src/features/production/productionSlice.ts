@@ -71,6 +71,7 @@ const productionSlice = createSlice({
       .addCase(fetchCountryProduction.pending, state => {
         state.country.status = 'pending'
         state.country.error = null
+        state.country.production = []// This empties the previous country's data
       })
       .addCase(fetchCountryProduction.fulfilled, (state, action) => {
         state.country.status = 'succeeded'
@@ -79,6 +80,7 @@ const productionSlice = createSlice({
       .addCase(fetchCountryProduction.rejected, (state, action) => {
         state.country.status = 'failed'
         state.country.error = action.error.message ?? 'Unknown error'
+        state.country.production = [] //a failed request leaves only the world line.
       })
   }
 })

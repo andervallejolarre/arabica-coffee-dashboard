@@ -47,7 +47,7 @@ export const countryData: CountryData[] = [
         slug: 'mexico',
         name: 'Mexico',
         continent: 'Central America',
-        faostat: 13,
+        faostat: 138,
         geoId: '484'
     },
     {

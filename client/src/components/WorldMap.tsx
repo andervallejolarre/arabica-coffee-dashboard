@@ -1,6 +1,7 @@
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import { useAppSelector } from '../hooks'
 import type { CountryData } from '../../../server/src/types/catalogTypes'
+import type { ModeState } from '../features/mode/modeSlice.ts'
 
 //pre-bundled topojson world atlas, fetched once and cached by the browser
 const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
@@ -9,6 +10,7 @@ const WorldMap = () => {
 
     const catalog: CountryData[] = useAppSelector(state => state.catalog.data)
     const selected: string = useAppSelector(state => state.selection.country)
+    const mode: ModeState = useAppSelector(state => state.mode.value)
 
     const match: CountryData | undefined = catalog.find(item => item.slug == selected)
 
@@ -29,7 +31,7 @@ const WorldMap = () => {
                         <Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            fill={match?.geoId === geo.id
+                            fill={(match?.geoId === geo.id || mode === 'global')
                                 ? 'rgb(191, 216, 221)'
                                 : 'rgb(236, 252, 240, 80%)'
                             }
