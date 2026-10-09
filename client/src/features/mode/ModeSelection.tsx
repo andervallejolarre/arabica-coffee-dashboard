@@ -22,7 +22,7 @@ const ModeSelection = () => {
 
     return (
         <div className="modeSelector">
-            <label>Mode:</label>
+            <label htmlFor="mode-select">Mode:</label>
             <select
                 name="mode"
                 id="mode-select"

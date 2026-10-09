@@ -52,7 +52,14 @@ export const fetchCountryProduction = createAsyncThunk(
 const productionSlice = createSlice({
   name: 'production',
   initialState,
-  reducers: {},
+  reducers: {
+    //used when no country is chosen, so the chart is empty without a request
+    countryCleared(state) {
+      state.country.status = 'idle'
+      state.country.error = null
+      state.country.production = []
+    }
+  },
   //thunk functions are stablished as extraReducers. With 3 status
   extraReducers: builder => {
     builder
@@ -84,5 +91,7 @@ const productionSlice = createSlice({
       })
   }
 })
+
+export const { countryCleared } = productionSlice.actions
 
 export default productionSlice.reducer
