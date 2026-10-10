@@ -32,10 +32,10 @@ const WorldMap = () => {
                             key={geo.rsmKey}
                             geography={geo}
                             fill={(match?.geoId === geo.id || mode === 'global')
-                                ? 'rgb(191, 216, 221)'
-                                : 'rgb(236, 252, 240, 80%)'
+                                ? 'rgb(225, 241, 152, 90%)'
+                                : 'rgb(113, 147, 104, 80%)'
                             }
-                            stroke={'rgb(191, 216, 221)'}
+                            stroke={'rgb(38,87,72, 50%)'}
                         />
                     ))
                 }

@@ -28,6 +28,14 @@ const Graph = ({ data, series }: GraphProps) => {
                 withLegend
                 curveType="linear"
                 tickLine="x"
+                textColor="rgb(186, 215, 219)"
+                activeDotProps={{ r: 4, strokeWidth: 1, fill: 'rgb(186, 215, 219)' }}
+                styles={{
+                    tooltip: { backgroundColor: 'rgb(33, 68, 56, 90%)'},
+                    tooltipLabel: {color: 'rgb(186, 215, 219)'},
+                    tooltipItemName: {color: 'rgb(186, 215, 219)'},
+                    tooltipItemData: {color: 'rgb(186, 215, 219)'},
+                }}
             />
         </div>
     )

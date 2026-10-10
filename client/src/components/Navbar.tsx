@@ -11,8 +11,11 @@ const Navbar = () =>{
 
     return(
         <section className='navbar'>
+            <h4>Coffee Production Dashboard</h4>
+            <div className='selectors'>
             <ModeSelection />
             {modeSelected === 'country' && <VariableSelection />}
+            </div>
             {modeSelected === 'country' && <WorldComparisonToggle />}
         </section>
     )

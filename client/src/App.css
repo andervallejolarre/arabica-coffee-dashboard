@@ -2,7 +2,8 @@
   width: 100%;
   border: none;
   overflow: hidden;
-  background: rgb(236, 252, 240, 80%);
+  background: rgb(38, 87, 72);
+  color: rgb(186, 215, 219)
 }
 
 .screen {
@@ -19,128 +20,197 @@
     width: 100vw;
     height: 5vh;
 
+    h4 {
+      margin: 0;
+      box-sizing: border-box;
+      align-self: center;
+    }
+
+    .selectors,
     .modeSelector,
     .variableSelectors {
       display: flex;
       gap: 2em;
       align-items: center;
       justify-content: center;
+
+      select {
+        border: none;
+        background: none;
+        color: rgb(186, 215, 219);
+        transition: 0.4s;
+      }
+    }
+
+    .switch {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      height: 5vh;
+      width: auto;
+    }
+
+    .switch input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      align-self: self-start;
+      margin-top: 0.5em;
+      width: 0;
+      height: 0;
+    }
+
+    .switch input[type="checkbox"]:before {
+      content: '';
+      position: absolute;
+      height: 32px;
+      width: 64px;
+      background: rgb(113, 147, 104, 80%);
+      border: solid 1px rgb(186, 215, 219);
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 1px 1px 2px 1px rgb(225, 241, 152, 30%);
+    }
+
+    .switch input[type="checkbox"]:after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      height: 24px;
+      width: 24px;
+      background: rgb(113, 147, 104, 80%);
+      border: solid 1px rgb(186, 215, 219);
+      border-radius: 8px;
+      transition: linear 0.2s;
+    }
+
+    .switch input[type="checkbox"]:checked::after {
+      left: 36px;
+      background: rgb(225, 241, 152, 90%);
+    }
+
+    .switch input[type="checkbox"]:checked::before {
+      box-shadow: 0px 0px 10px 1px rgb(225, 241, 152, 90%);;
+      transition: linear 0.2s;
     }
   }
 
-  .background {
-    margin:0;
+}
+
+.background {
+  margin: 0;
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  justify-content: center;
+  max-height: 95vh;
+
+  .worldMap {
+    justify-self: center;
+    position: relative;
     width: 100vw;
+    min-width: 1400px;
     height: auto;
-    position: absolute;
-    justify-content: center;
     max-height: 95vh;
+    min-height: 85vh;
+    display: block;
+  }
+}
+
+.mainPanel {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 95vh;
+
+  align-content: center;
+
+  .chart {
+    position: relative;
+    width: 50vw;
+    max-width: 680px;
+    height: 43vh;
+    padding: 1.5em 2em 0em 2em;
+    margin: 0;
+    background: rgb(33, 68, 56, 90%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.50);
+    /*border: 12px solid rgb(216, 232, 220);*/
+    border-radius: 20px;
+
+    justify-self: center;
+  }
+
+  .countryChart {
+    margin-top: 15vh;
+    text-transform: uppercase;
+    justify-self: center;
+
+    h2 {
+      font-size: xx-large;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px;
+      color: rgb(186, 215, 219)
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .background {
+    .worldMap {
+      min-width: 1600px;
+      transform: translateX(-50px);
+    }
+  }
+}
+
+@media (max-width: 780px) {
+
+  .background {
 
     .worldMap {
-      justify-self: center;
-      position: relative;
-      width: 100vw;
-      min-width: 1400px;
-      height: auto;
-      max-height: 95vh;
-      min-height: 85vh;
-      display: block;
+      path {
+        fill: rgba(191, 216, 221);
+        stroke: rgb(191, 216, 221);
+        stroke-width: 1px;
+      }
     }
   }
 
   .mainPanel {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 95vh;
+    width: 80%;
 
-    align-content: center;
+    .content {
+      grid-template-columns: 1fr;
+      border-bottom-right-radius: 0;
 
-    .chart {
-      position: relative;
-      width: 50vw;
-      max-width: 680px;
-      height: 43vh;
-      padding: 1em 1em 1em 1em;
-      margin: 0;
-      background: rgb(236, 252, 240, 80%);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.50);
-      border: 12px solid rgb(216, 232, 220);
-      border-radius: 20px;
+      .part2 {
+        order: -1;
 
-      justify-self: center;
-    }
+        .countrySelection {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
 
-    .countryChart {
-      margin-top: 15vh;
-      text-transform: uppercase;
-      justify-self: center;
+          h3 {
+            grid-column: 1 / -1;
+            /* span from the first line to the last line = full row */
+          }
 
-      h2 {
-        font-size: xx-large;
-        display: inline-block;
-        padding: 10px;
-        background: rgb(216, 232, 220);
-        border-radius: 10px;
-        color: rgb(57, 91, 68)
-      }
-    }
-  }
-
-  @media (max-width: 1200px) {
-
-    .background {
-      .worldMap {
-        min-width: 1600px;
-        transform: translateX(-50px);
-      }
-    }
-  }
-
-  @media (max-width: 780px) {
-
-    .background {
-
-      .worldMap {
-        path {
-          fill: rgba(191, 216, 221);
-          stroke: rgb(191, 216, 221);
-          stroke-width: 1px;
-        }
-      }
-    }
-
-    .mainPanel {
-      width: 80%;
-
-      .content {
-        grid-template-columns: 1fr;
-        border-bottom-right-radius: 0;
-
-        .part2 {
-          order: -1;
-
-          .countrySelection {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-
-            h3 {
-              grid-column: 1 / -1;
-              /* span from the first line to the last line = full row */
-            }
-
-            li {
-              padding: 0;
-              border: none;
-            }
+          li {
+            padding: 0;
+            border: none;
           }
         }
+      }
 
-        .countryChart {
-          right: 0;
-        }
+      .countryChart {
+        right: 0;
       }
     }
   }
+}
 }

@@ -22,15 +22,15 @@ const ModeSelection = () => {
 
     return (
         <div className="modeSelector">
-            <label htmlFor="mode-select">Mode:</label>
+            {/*<label htmlFor="mode-select">Mode:</label>*/}
             <select
                 name="mode"
                 id="mode-select"
                 value={selectedMode}
                 onChange={handleModeChange}
             >
-                <option key='global' value='global'>Global</option>
-                <option key='country' value='country'>Country</option>
+                <option key='global' value='global'>Global Mode</option>
+                <option key='country' value='country'>Country Mode</option>
             </select>
         </div>
     )

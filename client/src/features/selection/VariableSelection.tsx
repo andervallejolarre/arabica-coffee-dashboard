@@ -30,7 +30,7 @@ const VariableSelection = () => {
     return (
         <section className="variableSelectors">
 
-            <label htmlFor="continent-select">Continent:</label>
+            {/*<label htmlFor="continent-select">Continent:</label>*/}
             <select
                 name="continents"
                 id="continent-select"
@@ -43,7 +43,7 @@ const VariableSelection = () => {
                 ))}
             </select>
 
-            <label htmlFor="country-select">Country:</label>
+            {/*<label htmlFor="country-select">Country:</label>*/}
             <select
                 name="countries"
                 id="country-select"

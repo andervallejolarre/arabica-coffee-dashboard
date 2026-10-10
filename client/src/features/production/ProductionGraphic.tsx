@@ -37,10 +37,10 @@ const ProductionGraphic = () => {
     //each name is the key of a value in the merged rows
     const series: GraphSeries[] = []
     if (showWorld) {
-        series.push({ name: 'world', label: 'World (tonnes)', color: 'rgba(151, 196, 211, 1)' })
+        series.push({ name: 'world', label: 'World (tonnes)', color: 'rgba(186, 215, 219, 1)' })
     }
     if (showCountry) {
-        series.push({ name: 'country', label: `${countryName} (tonnes)`, color: 'rgba(190, 120, 60, 1)' })
+        series.push({ name: 'country', label: `${countryName} (tonnes)`, color: 'rgba(225, 241, 152, 1)' })
     }
 
     return (
