@@ -27,6 +27,11 @@ const selectionSlice = createSlice({
     countrySelected(state, action: PayloadAction<string>) {
       state.country = action.payload
     },
+    //action to help with the UI movement
+    selectedReset(state) {
+      state.continent = ''
+      state.country = ''
+    },
     worldComparison(state, action: PayloadAction<boolean>) {
       state.worldComparison = action.payload
     },
@@ -36,6 +41,7 @@ const selectionSlice = createSlice({
 // Export the auto-generated action creator with the same name
 export const { continentSelected } = selectionSlice.actions
 export const { countrySelected } = selectionSlice.actions
+export const { selectedReset } = selectionSlice.actions
 export const { worldComparison } = selectionSlice.actions
 
 // Export the generated reducer function

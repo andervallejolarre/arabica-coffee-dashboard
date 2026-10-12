@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/index'
 import { modeSelected, type ModeState } from '../mode/modeSlice.ts'
+import { selectedReset } from '../selection/selectionSlice.ts'
 
 const isModeState = (value: string): value is ModeState =>
     value === 'global' || value === 'country'
@@ -17,6 +18,7 @@ const ModeSelection = () => {
         const value = event.target.value
         if (isModeState(value)) {
             dispatch(modeSelected(value))
+            dispatch(selectedReset())
         }
     }
 

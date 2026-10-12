@@ -28,10 +28,10 @@ const TargetData = () => {
         <section className="countryChart">
             {/*Displaying sountry State*/}
             <h2>{mode === 'global'
-                ? "World"
+                ? "World's coffee production"
                 : selected.country === ''
-                    ? 'Choose a country from the list so you can compare it'
-                    : (countryShown?.name ?? selected.country)}'s coffee production </h2>
+                    ? 'Choose a country from the list'
+                    : (countryShown?.name ?? selected.country) + `'s coffee production` }</h2>
         </section>
     )
 }

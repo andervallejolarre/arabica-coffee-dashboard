@@ -15,8 +15,7 @@
   .navbar {
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-around;
+    grid-template-columns: 1fr 3fr 1fr;
     width: 100vw;
     height: 5vh;
 
@@ -26,19 +25,54 @@
       align-self: center;
     }
 
-    .selectors,
-    .modeSelector,
-    .variableSelectors {
-      display: flex;
-      gap: 2em;
-      align-items: center;
-      justify-content: center;
+    .selectors {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
 
-      select {
-        border: none;
-        background: none;
-        color: rgb(186, 215, 219);
-        transition: 0.4s;
+      .modeSelector,
+      .variableSelectors {
+        display: flex;
+        gap: 2em;
+        align-items: center;
+        justify-content: center;
+
+        select {
+          border: none;
+          background: none;
+          color: rgb(186, 215, 219);
+          border-left: solid 2px rgb(33, 68, 56, 70%);
+          text-align: center;
+          transition: 0.4s;
+          width: 15vw;
+          outline: none;
+        }
+
+        select:focus,
+        select:focus-visible {
+          box-shadow: 0 0 0 1px rgb(186, 215, 219, 30%);
+        }
+      }
+
+      .variableSelectors{
+        height: 5vh;
+      }
+
+      .fade-enter {
+        opacity: 0;
+      }
+
+      .fade-enter-active {
+        opacity: 1;
+        transition: opacity 300ms;
+      }
+
+      .fade-exit {
+        opacity: 1;
+      }
+
+      .fade-exit-active {
+        opacity: 0;
+        transition: opacity 300ms;
       }
     }
 
@@ -64,39 +98,40 @@
     .switch input[type="checkbox"]:before {
       content: '';
       position: absolute;
-      height: 32px;
-      width: 64px;
-      background: rgb(113, 147, 104, 80%);
+      height: 3vh;
+      width: 4.3vw;
+      max-width: 72px;
+      background: rgb(38, 87, 72);
       border: solid 1px rgb(186, 215, 219);
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 1px 1px 2px 1px rgb(225, 241, 152, 30%);
+      box-shadow: 1px 1px 2px 1px rgb(28, 77, 62);
     }
 
     .switch input[type="checkbox"]:after {
       content: '';
       position: absolute;
-      top: 4px;
+      top: 0.5vh;
       left: 4px;
-      height: 24px;
-      width: 24px;
-      background: rgb(113, 147, 104, 80%);
+      height: 2vh;
+      width: 2vw;
+      max-width: 30px;
+      background: rgb(38, 87, 72);
       border: solid 1px rgb(186, 215, 219);
       border-radius: 8px;
       transition: linear 0.2s;
     }
 
     .switch input[type="checkbox"]:checked::after {
-      left: 36px;
-      background: rgb(225, 241, 152, 90%);
+      left: 2vw;
+      background: rgb(186, 215, 219);
     }
 
     .switch input[type="checkbox"]:checked::before {
-      box-shadow: 0px 0px 10px 1px rgb(225, 241, 152, 90%);;
+      box-shadow: 0px 0px 10px 1px rgb(186, 215, 219);
       transition: linear 0.2s;
     }
   }
-
 }
 
 .background {
@@ -130,32 +165,50 @@
 
   .chart {
     position: relative;
-    width: 50vw;
+    width: 35vw;
     max-width: 680px;
     height: 43vh;
     padding: 1.5em 2em 0em 2em;
     margin: 0;
     background: rgb(33, 68, 56, 90%);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.50);
-    /*border: 12px solid rgb(216, 232, 220);*/
     border-radius: 20px;
-
     justify-self: center;
+    transition: all 0.3s ease;
   }
 
   .countryChart {
     margin-top: 15vh;
     text-transform: uppercase;
     justify-self: center;
+    background: rgb(33, 68, 56, 90%);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 
     h2 {
       font-size: xx-large;
       display: inline-block;
       padding: 10px;
+      margin: 1vh;
       border-radius: 10px;
       color: rgb(186, 215, 219)
     }
   }
+}
+
+.mainPanel:is([data-continent="asia" i], [data-country-continent="asia" i]) :is(.chart) {
+  transform: translateX(-150px);
+  /* adjust the value as needed */
+}
+
+.mainPanel:is([data-continent="central america" i], [data-country-continent="central america" i], [data-continent="south america" i], [data-country-continent="south america" i]) :is(.chart) {
+  transform: translateX(200px);
+  /* adjust the value as needed */
+}
+
+.mainPanel:is([data-continent="africa" i], [data-country-continent="africa" i]) :is(.chart) {
+  transform: translateX(-500px);
+  /* adjust the value as needed */
 }
 
 @media (max-width: 1200px) {
@@ -171,7 +224,6 @@
 @media (max-width: 780px) {
 
   .background {
-
     .worldMap {
       path {
         fill: rgba(191, 216, 221);
@@ -212,5 +264,4 @@
       }
     }
   }
-}
 }

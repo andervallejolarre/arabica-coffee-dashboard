@@ -10,7 +10,6 @@ const WorldMap = () => {
 
     const catalog: CountryData[] = useAppSelector(state => state.catalog.data)
     const selected: string = useAppSelector(state => state.selection.country)
-    const mode: ModeState = useAppSelector(state => state.mode.value)
 
     const match: CountryData | undefined = catalog.find(item => item.slug == selected)
 
@@ -28,10 +27,10 @@ const WorldMap = () => {
                 {/*Zoom In, Annotations, screens, etc are available as extra components*/}
                 {({ geographies }) =>
                     geographies.map(geo => (
-                        <Geography
+                        < Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            fill={(match?.geoId === geo.id || mode === 'global')
+                            fill={(match && match.geoId === geo.id)
                                 ? 'rgb(225, 241, 152, 90%)'
                                 : 'rgb(113, 147, 104, 80%)'
                             }
