@@ -11,7 +11,7 @@ const TargetData = () => {
     // We use the selector hook to get `state.country`
     const mode: ModeState = useAppSelector(state => state.mode.value)
     const selected: SelectionState = useAppSelector(state => state.selection);
-    const catalog: CatalogState = useAppSelector(state => state.catalog )
+    const catalog: CatalogState = useAppSelector(state => state.catalog)
 
     //undefined until the catalog has loaded, so we fall back to the slug
     const countryShown: CountryData | undefined = catalog.data.find(item => item.slug === selected.country)
@@ -26,12 +26,14 @@ const TargetData = () => {
 
     return (
         <section className="countryChart">
-            {/*Displaying sountry State*/}
-            <h2>{mode === 'global'
-                ? "World's coffee production"
-                : selected.country === ''
-                    ? 'Choose a country from the list'
-                    : (countryShown?.name ?? selected.country) + `'s coffee production` }</h2>
+            {/*Displaying country State*/}
+            <div className='h2Background'>
+                <h2>{mode === 'global'
+                    ? "World's coffee production"
+                    : selected.country === ''
+                        ? 'Choose a country from the list'
+                        : (countryShown?.name ?? selected.country) + `'s coffee production`}</h2>
+            </div>
         </section>
     )
 }

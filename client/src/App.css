@@ -53,7 +53,7 @@
         }
       }
 
-      .variableSelectors{
+      .variableSelectors {
         height: 5vh;
       }
 
@@ -137,20 +137,20 @@
 .background {
   margin: 0;
   width: 100vw;
-  height: auto;
+  height: 95vh;
   position: absolute;
+  display: flex;
   justify-content: center;
-  max-height: 95vh;
 
   .worldMap {
-    justify-self: center;
-    position: relative;
+    flex-shrink: 0;
+    margin:0;
+    display: block;
     width: 100vw;
     min-width: 1400px;
     height: auto;
     max-height: 95vh;
     min-height: 85vh;
-    display: block;
   }
 }
 
@@ -164,11 +164,12 @@
   align-content: center;
 
   .chart {
+    display: inline-block;
     position: relative;
     width: 35vw;
     max-width: 680px;
     height: 43vh;
-    padding: 1.5em 2em 0em 2em;
+    padding: 1.5em 1.5em 0em 1.5em;
     margin: 0;
     background: rgb(33, 68, 56, 90%);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.50);
@@ -181,33 +182,36 @@
     margin-top: 15vh;
     text-transform: uppercase;
     justify-self: center;
-    background: rgb(33, 68, 56, 90%);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 
-    h2 {
-      font-size: xx-large;
-      display: inline-block;
-      padding: 10px;
-      margin: 1vh;
-      border-radius: 10px;
-      color: rgb(186, 215, 219)
+    .h2Background {
+      width: 100%;
+
+      h2 {
+        display: inline-block;
+        font-size: clamp(1em,2.5vw,2em);
+        padding: 15px;
+        margin: 0;
+        color: rgb(186, 215, 219);
+        background: rgb(33, 68, 56, 90%);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+      }
     }
   }
 }
 
 .mainPanel:is([data-continent="asia" i], [data-country-continent="asia" i]) :is(.chart) {
-  transform: translateX(-150px);
+  transform: translateX(-15vw);
   /* adjust the value as needed */
 }
 
 .mainPanel:is([data-continent="central america" i], [data-country-continent="central america" i], [data-continent="south america" i], [data-country-continent="south america" i]) :is(.chart) {
-  transform: translateX(200px);
+  transform: translateX(20vw);
   /* adjust the value as needed */
 }
 
 .mainPanel:is([data-continent="africa" i], [data-country-continent="africa" i]) :is(.chart) {
-  transform: translateX(-500px);
+  transform: translateX(-30vw);
   /* adjust the value as needed */
 }
 
@@ -215,7 +219,7 @@
 
   .background {
     .worldMap {
-      min-width: 1600px;
+      min-width: 1200px;
       transform: translateX(-50px);
     }
   }
