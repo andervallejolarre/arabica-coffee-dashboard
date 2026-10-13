@@ -295,7 +295,30 @@
       max-height: none;
       height: auto;
       transform: translateX(-15px);
+      transition: transform 0.6s ease;
+      transform-origin: 60% 35%;
+      /* point on the map to zoom toward, as % of the SVG */
     }
+  }
+
+  .screen:has(.mainPanel:is([data-continent="oceania" i], [data-country-continent="oceania" i])) .worldMap {
+    transform: scale(2) translate(-25%, -18%);
+  }
+
+  .screen:has(.mainPanel:is([data-continent="asia" i], [data-country-continent="asia" i])) .worldMap {
+    transform: scale(2) translate(-20%, 5%);
+  }
+
+  .screen:has(.mainPanel:is([data-continent="africa" i], [data-country-continent="africa" i])) .worldMap {
+    transform: scale(1.8) translate(0%, -6%);
+  }
+
+  .screen:has(.mainPanel:is([data-continent="south america" i], [data-country-continent="south america" i])) .worldMap {
+    transform: scale(1.9) translate(20%, -21%);
+  }
+
+  .screen:has(.mainPanel:is([data-continent="central america" i], [data-country-continent="central america" i])) .worldMap {
+    transform: scale(2.5) translate(25%, 8%);
   }
 
   .mainPanel {
