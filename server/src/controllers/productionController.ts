@@ -27,7 +27,7 @@ export const globalProduction = async (req: Request, res: Response): Promise<voi
         //Here we filter the data response to take just what we need
         const production: ProductionPoint[] = faostatResponse.data.map((entry) => ({
             year: entry.Year,
-            value: entry.Value,
+            value: (entry.Value / 66.41),
         }));
 
         res.json(production);
@@ -67,7 +67,7 @@ export const countryProduction = async (req: Request, res: Response): Promise<vo
         //Here we filter the data response to take just what we need
         const production: ProductionPoint[] = faostatResponse.data.map((entry) => ({
             year: entry.Year,
-            value: entry.Value,
+            value: (entry.Value / 66.41),
         }));
 
         res.json(production);
