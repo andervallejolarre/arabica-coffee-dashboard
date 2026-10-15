@@ -9,7 +9,7 @@ const WorldComparisonToggle = () => {
 
     return (
         <div className="switch">
-        <label htmlFor="global-ref">Compare</label>
+        <label className="toggleLabel" htmlFor="global-ref">Compare</label>
         <input type="checkbox" name="global-ref" id="global-ref"
             checked={showWorldComparison}
             onChange={event => dispatch(worldComparison(event.currentTarget.checked))}

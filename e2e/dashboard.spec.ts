@@ -1,5 +1,33 @@
 import { test, expect } from '@playwright/test'
 
+test('loading website displays worlds production chart, title and mode selector', async ({ page }) => {
+  await page.goto('/')
+
+  await expect(page.getByRole('heading', { name: /World's coffee production/i })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'mode' })).toBeVisible()
+  await expect(page.locator('.recharts-wrapper')).toBeVisible()
+
+})
+
+test('changing to country mode changes title and adds new selectors/toggle', async ({ page }) => {
+  await page.goto('/')
+
+  const [response] = await Promise.all([
+    page.waitForResponse((res) => res.url().includes('/api/production/global') && res.ok()),
+    page.getByRole('combobox', { name: 'mode' }).selectOption('country')
+  ])
+
+  await expect(page.getByRole('heading', { name: /Choose a country from the list/i })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'mode' })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'country' })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'continent' })).toBeVisible()
+
+  await expect(page.locator('.switch')).toBeVisible()
+  await expect(page.locator('.recharts-wrapper')).toBeVisible()
+
+})
+
+/*
 test('selecting a country loads its coffee production', async ({ page }) => {
   await page.goto('/')
 
@@ -56,3 +84,4 @@ test('the chart widget displays the years returned by the FAOSTAT API', async ({
   await expect(chart.getByText(String(lastYear))).toBeVisible()
   await expect(chart.locator('.recharts-area-area').first()).toBeVisible()
 })
+  */

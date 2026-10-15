@@ -12,6 +12,10 @@
   margin: 0 auto;
   height: 100vh;
 
+  label{
+    display: none;
+  }
+
   .navbar {
     margin: 0;
     display: grid;
@@ -83,6 +87,10 @@
       gap: 1em;
       height: 5vh;
       width: auto;
+
+      .toggleLabel{
+        display: inherit;
+      }
     }
 
     .switch input[type="checkbox"] {
