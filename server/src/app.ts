@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors"
+import path from "path"
 import catalogRoute from "./routes/catalogRoute";
 import productionRoute from "./routes/productionRoute";
 
@@ -10,5 +11,13 @@ app.use(express.json());
 
 app.use("/api/catalog", catalogRoute)
 app.use("/api/production", productionRoute);
+
+// Serve React frontend as static files
+app.use(express.static(path.join(__dirname, "../../client/dist")))
+
+// Fallback: serve index.html for any non-API routes (for React Router)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/dist/index.html"))
+})
 
 export default app;
