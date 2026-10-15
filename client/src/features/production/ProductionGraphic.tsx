@@ -5,7 +5,7 @@ import Graph, { type GraphSeries } from '../../components/Graph'
 import type { ProductionPoint } from '../../../../server/src/types/faostatTypes'
 
 //one row per year with the world and/or country value
-const mergeByYear = (world: ProductionPoint[], country: ProductionPoint[]) => {
+export const mergeByYear = (world: ProductionPoint[], country: ProductionPoint[]) => {
     const rows = new Map<number, { year: number, world?: number, country?: number }>()
     world.forEach(point => rows.set(point.year, { ...rows.get(point.year), year: point.year, world: point.value }))
     country.forEach(point => rows.set(point.year, { ...rows.get(point.year), year: point.year, country: point.value }))
