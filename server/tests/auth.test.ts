@@ -53,8 +53,8 @@ describe('GET /api/production/:country', () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual([
-            { year: 2025, value: 321 },
-            { year: 2024, value: 111 },
+            { year: 2025, value: Math.round(321 / 66.41) },
+            { year: 2024, value: Math.round(111 / 66.41) },
         ]);
         //3 calls to our backend because we already loggedIn.
         expect(fetchMock).toHaveBeenCalledTimes(3);
@@ -85,8 +85,8 @@ describe('GET /api/production/:country', () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual([
-            { year: 2025, value: 321 },
-            { year: 2024, value: 111 },
+            { year: 2025, value: Math.round(321 / 66.41) },
+            { year: 2024, value: Math.round(111 / 66.41) },
         ]);
 
         //4 calls in this case. Token expires so we needed to logIn again
@@ -146,8 +146,8 @@ describe("fetching global production data and the country production", () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual([
-            { year: 2025, value: 321 },
-            { year: 2024, value: 111 },
+            { year: 2025, value: Math.round(321 / 66.41) },
+            { year: 2024, value: Math.round(111 / 66.41) },
         ]);
         //3 calls to our backend because global data fetching logs In.
         expect(fetchMock).toHaveBeenCalledTimes(3);

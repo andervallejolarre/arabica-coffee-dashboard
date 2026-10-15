@@ -29,7 +29,7 @@ describe('VariableSelection', () => {
     test('lists each continent once, after the placeholder', () => {
         renderSelectors()
 
-        expect(optionLabels('Continent:')).toEqual([
+        expect(optionLabels('Continent')).toEqual([
             'Select a continent', 'Asia', 'Central America', 'South America',
         ])
     })
@@ -37,7 +37,7 @@ describe('VariableSelection', () => {
     test('lists every country when no continent is chosen', () => {
         renderSelectors()
 
-        expect(optionLabels('Country:')).toEqual([
+        expect(optionLabels('Country')).toEqual([
             'Select a country', 'Vietnam', 'India', 'Honduras', 'Guatemala', 'Brazil',
         ])
     })
@@ -45,31 +45,31 @@ describe('VariableSelection', () => {
     test('shows only the countries of the chosen continent', () => {
         renderSelectors()
 
-        fireEvent.change(screen.getByRole('combobox', { name: 'Continent:' }), { target: { value: 'Asia' } })
+        fireEvent.change(screen.getByRole('combobox', { name: 'Continent' }), { target: { value: 'Asia' } })
 
-        expect(optionLabels('Country:')).toEqual(['Select a country', 'Vietnam', 'India'])
+        expect(optionLabels('Country')).toEqual(['Select a country', 'Vietnam', 'India'])
     })
 
     test('changing the continent updates the country list and clears the selected country', () => {
         const store = renderSelectors()
 
-        fireEvent.change(screen.getByRole('combobox', { name: 'Continent:' }), { target: { value: 'Asia' } })
-        fireEvent.change(screen.getByRole('combobox', { name: 'Country:' }), { target: { value: 'vietnam' } })
+        fireEvent.change(screen.getByRole('combobox', { name: 'Continent' }), { target: { value: 'Asia' } })
+        fireEvent.change(screen.getByRole('combobox', { name: 'Country' }), { target: { value: 'vietnam' } })
         expect(store.getState().selection.country).toBe('vietnam')
 
-        fireEvent.change(screen.getByRole('combobox', { name: 'Continent:' }), { target: { value: 'Central America' } })
+        fireEvent.change(screen.getByRole('combobox', { name: 'Continent' }), { target: { value: 'Central America' } })
 
-        expect(optionLabels('Country:')).toEqual(['Select a country', 'Honduras', 'Guatemala'])
+        expect(optionLabels('Country')).toEqual(['Select a country', 'Honduras', 'Guatemala'])
         expect(store.getState().selection.country).toBe('')
-        expect(screen.getByRole('combobox', { name: 'Country:' })).toHaveValue('')
+        expect(screen.getByRole('combobox', { name: 'Country' })).toHaveValue('')
     })
 
     test('dispatches the country and shows it as the selected value', () => {
         const store = renderSelectors()
 
-        fireEvent.change(screen.getByRole('combobox', { name: 'Country:' }), { target: { value: 'brazil' } })
+        fireEvent.change(screen.getByRole('combobox', { name: 'Country' }), { target: { value: 'brazil' } })
 
         expect(store.getState().selection.country).toBe('brazil')
-        expect(screen.getByRole('combobox', { name: 'Country:' })).toHaveValue('brazil')
+        expect(screen.getByRole('combobox', { name: 'Country' })).toHaveValue('brazil')
     })
 })

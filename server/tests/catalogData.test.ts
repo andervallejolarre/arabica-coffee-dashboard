@@ -18,7 +18,7 @@ describe('GET /api/catalog/', () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual(
-            countryData.map(({ slug, name, continent }) => ({ slug, name, continent }))
+            countryData.map(({ slug, name, continent, geoId }) => ({ slug, name, continent, geoId }))
         );
     });
 
@@ -38,7 +38,7 @@ describe('GET /api/catalog/', () => {
 
         expect(response.body).toEqual(
             expect.arrayContaining([
-                { slug: "brazil", name: "Brazil", continent: "South America" },
+                { slug: "brazil", name: "Brazil", continent: "South America", geoId: "076" },
             ])
         );
     });

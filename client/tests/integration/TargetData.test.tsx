@@ -57,29 +57,29 @@ describe('VariableSelection and TargetData requests', () => {
     test('choosing a country requests that country', async () => {
         renderPage()
 
-        choose('Country:', 'brazil')
+        choose('Country', 'brazil')
 
         await waitFor(() => expect(axios.get).toHaveBeenLastCalledWith('/api/production/brazil'))
     })
 
     test('changing the continent clears the country and the chart without a request', async () => {
         const store = renderPage()
-        choose('Country:', 'vietnam')
+        choose('Country', 'vietnam')
         await waitFor(() => expect(store.getState().production.country.production).toHaveLength(1))
 
-        choose('Continent:', 'Central America')
+        choose('Continent', 'Central America')
 
         expect(store.getState().production.country.production).toEqual([])
-        expect(screen.getByRole('combobox', { name: 'Country:' })).toHaveValue('')
+        expect(screen.getByRole('combobox', { name: 'Country' })).toHaveValue('')
         expect(axios.get).toHaveBeenCalledTimes(1)
     })
 
     test('choosing a different country requests the new one', async () => {
         renderPage()
-        choose('Country:', 'india')
+        choose('Country', 'india')
         await waitFor(() => expect(axios.get).toHaveBeenLastCalledWith('/api/production/india'))
 
-        choose('Country:', 'honduras')
+        choose('Country', 'honduras')
 
         await waitFor(() => expect(axios.get).toHaveBeenLastCalledWith('/api/production/honduras'))
     })

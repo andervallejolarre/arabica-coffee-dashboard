@@ -22,8 +22,8 @@ describe('GET /api/production/global', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual([
-      { year: 2025, value: 123 },
-      { year: 2024, value: 100 },
+      { year: 2025, value: Math.round(123 / 66.41) },
+      { year: 2024, value: Math.round(100 / 66.41) },
     ]);
   });
 
@@ -38,7 +38,7 @@ describe('GET /api/production/global', () => {
     const response = await request(app).get("/api/production/global");
 
     expect(response.body).toEqual([
-      { year: 2025, value: 123 },
+      { year: 2025, value: Math.round(123 / 66.41) },
     ]);
   });
 

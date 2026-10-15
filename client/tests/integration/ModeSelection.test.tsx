@@ -17,7 +17,7 @@ describe('ModeSelection', () => {
         .getAllByRole('option')
 
         expect(options.length).toEqual(2)
-        expect(options.map(option => option.textContent)).toEqual(['Global', 'Country'])
+        expect(options.map(option => option.textContent)).toEqual(['Global Mode', 'Country Mode'])
     })
 
     test('dispatches the mode when a valid option is chosen', () => {
