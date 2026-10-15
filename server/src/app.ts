@@ -16,7 +16,7 @@ app.use("/api/production", productionRoute);
 app.use(express.static(path.join(__dirname, "../../client/dist")))
 
 // Fallback: serve index.html for any non-API routes (for React Router)
-app.get("*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../../client/dist/index.html"))
 })
 
