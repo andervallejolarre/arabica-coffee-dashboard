@@ -29,10 +29,13 @@ function App() {
   return (
     <>
       <div className="screen">
+        {/*Top Bar where our mode, continent and country selectors are, as well as comparison toggle*/}
         <Navbar />
         <div className="background">
+          {/*Displayed WorldMap with different functionalities for global and country mode*/}
           <WorldMap />
         </div>
+        {/*Main panel with chart and info about our selection. data- arguments for CSS animation*/}
         <section className="mainPanel" data-continent={continent} data-country-continent={matchContinent?.continent}>
           <ProductionGraphic />
           <TargetData />

@@ -6,7 +6,7 @@ import modeReducer from './features/mode/modeSlice'
 
 export const store = configureStore({
   reducer: {
-    //we have two reducers available
+    //Four reducers available so far
     mode: modeReducer,
     catalog: catalogReducer,
     selection: selectionReducer,

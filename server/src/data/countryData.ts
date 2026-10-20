@@ -1,5 +1,6 @@
 import type { CountryData } from "../types/catalogTypes"
 
+//Catalog used for front-end to back-end communication and other features inside our front-end
 export const countryData: CountryData[] = [
     {
         slug: 'brazil',

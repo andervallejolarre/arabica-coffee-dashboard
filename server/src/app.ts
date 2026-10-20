@@ -9,7 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/catalog", catalogRoute)
+//to access our curated catalog
+app.use("/api/catalog", catalogRoute);
+
+//production requests
 app.use("/api/production", productionRoute);
 
 // Serve React frontend as static files

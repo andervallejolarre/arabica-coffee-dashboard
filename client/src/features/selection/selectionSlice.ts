@@ -18,20 +18,22 @@ const selectionSlice = createSlice({
   name: 'selection',
   initialState,
   reducers: {
-    //Our only reducer. It's going to be exported next
+    //Four reducers. First is four updating selection.continent with a country reset
     continentSelected(state, action: PayloadAction<string | null>) {
       state.continent = action.payload
       //the previous country may not belong to the new continent, so reset it
       state.country = ''
     },
+    //Updating selection.country
     countrySelected(state, action: PayloadAction<string>) {
       state.country = action.payload
     },
-    //action to help with the UI movement
+    //action to help with the UI movement by reseting the whole state
     selectedReset(state) {
       state.continent = ''
       state.country = ''
     },
+    //Turnning world comparison on/off with toggle
     worldComparison(state, action: PayloadAction<boolean>) {
       state.worldComparison = action.payload
     },

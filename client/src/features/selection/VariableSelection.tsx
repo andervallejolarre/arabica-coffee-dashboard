@@ -11,10 +11,13 @@ const VariableSelection = () => {
     const selectedContinent = useAppSelector(state => state.selection.continent)
     const selectedCountry = useAppSelector(state => state.selection.country)
 
+    //We need our curated catalog for triggering and passing values
     const catalogData = useAppSelector(state => state.catalog.data)
 
     //unique list of continents derived from the catalog
     const continents = Array.from(new Set(catalogData.map(item => item.continent)))
+
+    //Countries that are inside selected continent
     const countriesInvolved = selectedContinent != ''
         ? catalogData.filter(item => item.continent === selectedContinent)
         : catalogData
@@ -52,6 +55,7 @@ const VariableSelection = () => {
             >
                 <option value="" >Select a country</option>
                 {countriesInvolved.map(country => (
+                    //We use country.slug because it's being used for API requests and catalog comparisons
                     <option key={country.slug} value={country.slug}>{country.name}</option>
                 ))}
             </select>

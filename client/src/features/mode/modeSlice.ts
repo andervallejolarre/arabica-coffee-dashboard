@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-//our state type
+//our state type with two alternatives
 export type ModeState = 'global' | 'country'
 
 interface ModeSliceState{
@@ -16,7 +16,7 @@ const modeSlice = createSlice({
   name: 'mode',
   initialState,
   reducers: {
-    //Our only reducer. It's going to be exported next
+    //Our only reducer
     modeSelected(state, action: PayloadAction<ModeState>) {
       state.value = action.payload
     }
