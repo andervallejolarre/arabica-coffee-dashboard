@@ -5,6 +5,7 @@ const WorldComparisonToggle = () => {
 
     const dispatch = useAppDispatch()
 
+    //state value
     const showWorldComparison = useAppSelector(state => state.selection.worldComparison)
 
     return (
@@ -12,6 +13,7 @@ const WorldComparisonToggle = () => {
         <label className="toggleLabel" htmlFor="global-ref">Compare</label>
         <input type="checkbox" name="global-ref" id="global-ref"
             checked={showWorldComparison}
+            //triggering our action reducer
             onChange={event => dispatch(worldComparison(event.currentTarget.checked))}
         />
         </div>

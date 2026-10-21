@@ -15,6 +15,7 @@ export interface ProductionRootState {
   global: ProductionState
 }
 
+//We have two independent states in the same slice, each with it's own status and error values
 const initialState: ProductionRootState = {
   country: {
     production: [],
@@ -28,7 +29,7 @@ const initialState: ProductionRootState = {
   }
 }
 
-//Our asyncthunks. They can be called wherever
+//Globa asyncthunk. It can be called wherever
 export const fetchGlobalProduction = createAsyncThunk(
   'production/global',
   async () => {
@@ -38,6 +39,7 @@ export const fetchGlobalProduction = createAsyncThunk(
   }
 )
 
+//Country asyncthunk. It can be called wherever
 export const fetchCountryProduction = createAsyncThunk(
   'production/country',
   async (_, { getState }) => {
@@ -63,6 +65,7 @@ const productionSlice = createSlice({
   //thunk functions are stablished as extraReducers. With 3 status
   extraReducers: builder => {
     builder
+    //thunk functions for Global mode
     .addCase(fetchGlobalProduction.pending, state => {
         state.global.status = 'pending'
         state.global.error = null
@@ -75,6 +78,7 @@ const productionSlice = createSlice({
         state.global.status = 'failed'
         state.global.error = action.error.message ?? 'Unknown error'
       })
+      //thunk functions for Country mode
       .addCase(fetchCountryProduction.pending, state => {
         state.country.status = 'pending'
         state.country.error = null

@@ -7,6 +7,7 @@ export interface GraphSeries {
     color: string
 }
 
+//interface for handling global and country production
 export interface GraphProps {
     data: Record<string, number | undefined>[]
     series: GraphSeries[]
@@ -30,6 +31,7 @@ const Graph = ({ data, series }: GraphProps) => {
                 tickLine="x"
                 textColor="rgb(186, 215, 219)"
                 activeDotProps={{ r: 4, strokeWidth: 1, fill: 'rgb(186, 215, 219)' }}
+                //Editing some styles
                 styles={{
                     tooltip: { backgroundColor: 'rgb(33, 68, 56, 90%)'},
                     tooltipLabel: {color: 'rgb(186, 215, 219)'},

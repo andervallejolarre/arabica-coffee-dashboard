@@ -29,7 +29,7 @@ const WorldMap = () => {
                         < Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            fill={(match && match.geoId === geo.id)
+                            fill={(match && match.geoId === geo.id)//condition to fill a selected country, also avoid a geoURL bug
                                 ? 'rgb(225, 241, 152, 90%)'
                                 : 'rgb(113, 147, 104, 80%)'
                             }
