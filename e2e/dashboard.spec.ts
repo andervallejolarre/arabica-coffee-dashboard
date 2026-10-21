@@ -119,13 +119,15 @@ test('map shows default color when no country is selected', async ({ page }) => 
   await page.goto('/')
   await page.getByRole('combobox', { name: 'mode' }).selectOption('country')
 
-  // Find paths with the highlight color
-  const highlightedPaths = page.locator('path[fill*="225, 241, 152"]')
-  expect(await highlightedPaths.count()).toBe(0)
-
-  // Verify there are also default-colored paths
+  // Wait for the map geographies to render (they load asynchronously from a CDN)
   const defaultPaths = page.locator('path[fill*="113, 147, 104, 80%"]')
-  expect(await defaultPaths.count()).toBeGreaterThan(0)
+  await expect(defaultPaths.first()).toBeVisible()
+
+  // No path should be highlighted when no country is selected
+  const highlightedPaths = page.locator('path[fill*="225, 241, 152"]')
+  await expect(highlightedPaths).toHaveCount(0)
+
+  expect(await defaultPaths.count()).toBeGreaterThan(0)//we need to wait for defaultPaths to ve visible before we .count()
 })
 
 test('changing country moves the highlighted section on the map', async ({ page }) => {
